@@ -41,6 +41,7 @@ function App() {
     setActiveCounter(false);
     setTimeRoof(0);
     stopEvents();
+    getConfig();
   }
 
   if (!config) {
