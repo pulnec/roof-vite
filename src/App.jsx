@@ -59,7 +59,7 @@ function App() {
       <div className="mb-4">
         <h3 className="text-2xl font-bold">Roof</h3>
       </div>
-      <RoofComponent/>
+      <RoofComponent config={config} />
       <ControlComponent config={config} onEventRoof={(r, n) => eventRootApi(r, n)}/>
       {activeCounter && <Counter timeRoof={timeRoof} onFinish={finishEvent} />}
     </main>
