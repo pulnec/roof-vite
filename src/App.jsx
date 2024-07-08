@@ -5,7 +5,7 @@ import Counter from './component/Counter/Counter'
 import RoofComponent from './component/RoofComponent/RoofComponent'
 import axios from 'axios'
 
-const ip = 'localhost';
+const ip = '192.168.1.131';
 
 function App() {
 
