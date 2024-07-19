@@ -6,6 +6,7 @@ import RoofComponent from './component/RoofComponent/RoofComponent'
 import axios from 'axios'
 
 const ip = '192.168.0.182';
+//const ip = '192.168.0.101';
 
 function App() {
 
@@ -31,6 +32,16 @@ function App() {
 
   const stopEvents = () => {
     axios.get(`http://${ip}:4569/roof/none`);
+  }
+
+  const reset = async () => {
+    try {
+      await axios.get(`http://${ip}:4569/roof/reset`);
+      getConfig();
+      alert('Reset apply')
+    } catch {
+      alert('Error reset')
+    }
   }
 
   useEffect(() => {
@@ -62,6 +73,7 @@ function App() {
       <RoofComponent config={config} />
       <ControlComponent config={config} onEventRoof={(r, n) => eventRootApi(r, n)}/>
       {activeCounter && <Counter timeRoof={timeRoof} onFinish={finishEvent} />}
+      <button className="mt-10 bg-slate-500 px-7 py-4 rounded-xl text-white font-bold" onClick={reset}>Reset</button>
     </main>
   )
 }
