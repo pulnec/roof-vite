@@ -27,9 +27,10 @@ export default function Counter(props) {
     <>
     <div className="absolute w-full h-full bg-stone-400  top-0 left-0 opacity-75" />
     <div className="absolute p-4 text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-        <div className="w-[200px] h-[100px] bg-stone-700 rounded-xl flex items-center justify-center flex-col">
+        <div className="w-[200px] h-[160px] bg-stone-700 rounded-xl flex items-center justify-center flex-col">
             <p className="text-white font-bold text-2xl">{counter}</p>
             <span className="text-gray-400">Por favor espere...</span>
+            <button className="mt-2 bg-red-700 px-7 py-4 rounded-xl text-white font-bold" onClick={() =>  props.onFinish()}>Stop</button>
         </div>
     </div>
     </>

@@ -25,13 +25,26 @@ function App() {
       setActiveCounter(true);
       setTimeRoof(resAction.seconds);
     } catch (e) {
-      console.log(e)
-      console.log('bad connection')
+      if (e.response.data.e === 'BAD_ROOF_STATUS') {
+        alert('One or more roofs are disconnected.')
+      } else {
+        alert('Action: Bad connection.')
+      }
     }
   }
 
-  const stopEvents = () => {
-    axios.get(`http://${ip}:4569/roof/none`);
+  const stopEvents = (notify = false) => {
+    axios.get(`http://${ip}:4569/roof/none`).then(() => {
+      if (notify) {
+        alert('Roof stop events success');
+      }
+    }).catch((e) => {
+      if (e.response.data.e === 'BAD_ROOF_STATUS') {
+        alert('One or more roofs are disconnected.')
+      } else {
+        alert('Stop: Bad connection.')
+      }
+    });
   }
 
   const reset = async () => {
@@ -73,7 +86,10 @@ function App() {
       <RoofComponent config={config} />
       <ControlComponent config={config} onEventRoof={(r, n) => eventRootApi(r, n)}/>
       {activeCounter && <Counter timeRoof={timeRoof} onFinish={finishEvent} />}
-      <button className="mt-10 bg-slate-500 px-7 py-4 rounded-xl text-white font-bold" onClick={reset}>Reset</button>
+      <div className="flex gap-1 justify-center">
+        <button className="mt-10 bg-slate-500 px-7 py-4 rounded-xl text-white font-bold" onClick={reset}>Reset</button>
+        <button className="mt-10 bg-red-700 px-7 py-4 rounded-xl text-white font-bold" onClick={() => stopEvents(true)}>Stop</button>
+      </div>
     </main>
   )
 }
