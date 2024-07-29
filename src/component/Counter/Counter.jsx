@@ -30,7 +30,8 @@ export default function Counter(props) {
         <div className="w-[200px] h-[160px] bg-stone-700 rounded-xl flex items-center justify-center flex-col">
             <p className="text-white font-bold text-2xl">{counter}</p>
             <span className="text-gray-400">Por favor espere...</span>
-            <button className="mt-2 bg-red-700 px-7 py-4 rounded-xl text-white font-bold" onClick={() =>  props.onFinish()}>Stop</button>
+            <button className="mt-2 bg-red-700 px-7 py-4 rounded-xl text-white font-bold" onClick={() =>  props.onStop()}>Detener</button>
+            <span className="text-xs text-amber-400">Solo en caso de emergencia</span>
         </div>
     </div>
     </>
