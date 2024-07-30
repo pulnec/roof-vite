@@ -7,7 +7,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 
 const ip = '192.168.0.182';
-//const ip = '192.168.0.101';
+//const ip = '192.168.0.102';
 
 function App() {
 
@@ -138,7 +138,7 @@ function App() {
     <main>
       <div className="mb-4">
         <div className="text-2xl font-bold items-center flex justify-center">
-          <img src="./src/assets/univiveros.png" width={150}/>
+          <img src="./univiveros.png" width={150}/>
         </div>
       </div>
       <RoofComponent config={config} />
